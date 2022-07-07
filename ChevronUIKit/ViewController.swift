@@ -60,13 +60,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        if indexPath.row == 0 {
             cell.textLabel?.text = chevrons[indexPath.section].title
-        return cell
+        } else {
+            cell.textLabel?.text = chevrons[indexPath.section].options[indexPath.row - 1]
         }
         
-        return UITableViewCell()
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
